@@ -6,11 +6,13 @@
 
 // BMI = kg/m2
 
-function calculateBMI() {
-  const weight = 100;
-  const height = 185;
+const readline = require('readline-sync');
+const weight = readline.questionInt('Qual seu peso? ');
+const height = readline.questionInt('Qual sua altura? ');
+
+function calculateBMI(weight, height) {
   const bmi = (weight/ Math.pow(height/ 100,2)).toFixed(2);
   console.log(bmi);
 };
 
-calculateBMI();
+calculateBMI(weight, height);
