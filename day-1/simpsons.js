@@ -7,7 +7,9 @@ async function main(id) {
   // part 1
   const readSimpsons = await fs.readFile('./simpsons.json', 'utf-8');
   const characters = JSON.parse(readSimpsons);
-  const mapChars = characters.map(({id, name}) => `${id} - ${name}`);
+  const filterChars = characters.filter(char => char.id !== '10' && char.id !== '6');
+  await fs.writeFile('./simpsons.json', JSON.stringify(filterChars));
+  const mapChars = filterChars.map(({id, name}) => `${id} - ${name}`);
   mapChars.forEach(char => console.log(char));
 
   //part 2
@@ -16,7 +18,12 @@ async function main(id) {
   if (simpsonId === undefined) {
     throw new Error('id not found');
   }
-  return console.log(simpsonId);
+  return simpsonId;
 };
 
-main(simpsonId);
+async function printReturn() {
+  const printSimpson = await main(simpsonId);
+  console.log(printSimpson);
+};
+
+printReturn();
