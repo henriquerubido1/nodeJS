@@ -13,9 +13,12 @@ async function main(id) {
   // await fs.writeFile('./simpsons.json', JSON.stringify(filterChars));
 
   // part 4 & 5
-
   const filterChars = characters.filter(({id}) => id < 5);
   filterChars.push({id: '8', name: 'Nelson Muntz'});
+
+  // part 6
+  // splice() selects posision 4 in an array and reclaces 1 value for Maggie
+  filterChars.splice(4, 1, {id: '15', name: 'Maggie Simpson'});
   await fs.writeFile('./simpsonFamily.json', JSON.stringify(filterChars));
   
   //part 2
