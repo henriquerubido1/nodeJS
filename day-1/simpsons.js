@@ -12,9 +12,10 @@ async function main(id) {
   // const filterChars = characters.filter(({id}) => id !== '10' && id !== '6');
   // await fs.writeFile('./simpsons.json', JSON.stringify(filterChars));
 
-  // part 4
+  // part 4 & 5
 
   const filterChars = characters.filter(({id}) => id < 5);
+  filterChars.push({id: '8', name: 'Nelson Muntz'});
   await fs.writeFile('./simpsonFamily.json', JSON.stringify(filterChars));
   
   //part 2
